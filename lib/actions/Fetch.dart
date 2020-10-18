@@ -13,8 +13,8 @@ class Fetch {
          List list = json.decode(res.body);
         return list.map((m) => Lesson.fromJson(m)).toList();
     }
-    // else {
-    //   throw Exception('Cant Connect API');
-    // }
+    else {
+      throw Exception('Cant Connect API');
+    }
   }
 }

@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:eldercare/actions/Fetch.dart';
+import 'package:eldercare/models/Lesson.dart';
 import 'package:flutter/material.dart';
 
 class Loading extends StatefulWidget {
@@ -9,27 +12,40 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
-  Future jsonData;
+  Future lessonData;
+  bool isLoadFinish = false;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    jsonData = Fetch.getData();
+    Future.delayed(Duration(seconds: 5),(){
+      setState(() {
+        isLoadFinish = true;
+      });
+    });
+    lessonData = Fetch.getData();
   }
+
   @override
   Widget build(BuildContext context) {
+    print(isLoadFinish);
     return Container(
        child: Scaffold(
          body: Center(
            child: FutureBuilder(
-           future: jsonData,
-           builder: (context, snapshot) {
-             if(snapshot.hasData){
-               return Text(snapshot.data[0].content[0].header);
-             } else {
-               return Text('No Data');
-             }
-         },)),
+             future: lessonData,
+             builder: (context, snapshot) {
+               if(snapshot.hasData){
+                 if(isLoadFinish != true){
+                   return LinearProgressIndicator();
+                 } else {
+                   return Text('Complete');
+                 }
+               }
+               else{
+                 return Text('No Data');
+               }
+             },
+           )),
        ),
     );
   }
