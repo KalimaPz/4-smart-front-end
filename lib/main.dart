@@ -11,8 +11,8 @@ class MainRender extends StatefulWidget {
 class _MainRenderState extends State<MainRender> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-       child: Loading(),
+    return MaterialApp(
+      home: Loading(),
     );
   }
 }
