@@ -1,4 +1,5 @@
 import 'package:eldercare/components/CustomizableButton.dart';
+import 'package:eldercare/views/MainMenu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -35,7 +36,14 @@ class _RegisterState extends State<Register>
                     width: 300,
                     child: CustomizableButton(
                       text: 'ดำเนินการต่อ',
-                      callback: () {},
+                      callback: () {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MainMenu(),
+                            ),
+                            (route) => false);
+                      },
                       backgroundColor: Colors.blue,
                       addedHeight: 20,
                     ),

@@ -18,7 +18,7 @@ class CircularButton extends StatelessWidget {
     @required this.subtitle,
     @required this.callback,
     this.size = 64,
-    this.fontSize = 18,
+    this.fontSize = 24,
   }) : super(key: key);
 
   @override
@@ -26,7 +26,12 @@ class CircularButton extends StatelessWidget {
     return GestureDetector(
       onTap: callback,
       child: Container(
+        width: size * 1.6,
+        height: size * 1.6,
+        // decoration: BoxDecoration(border: Border.all()),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               width: size,
