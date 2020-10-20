@@ -10,6 +10,16 @@ class Connecting extends StatefulWidget {
 }
 
 class _ConnectingState extends State<Connecting> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   bool loading = false;
   final int loadingDelay = 2000;
   final double titleText = 48;
@@ -18,6 +28,7 @@ class _ConnectingState extends State<Connecting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.lightBlue[50],
       body: SafeArea(
         child: Center(
           child: Container(
@@ -29,7 +40,10 @@ class _ConnectingState extends State<Connecting> {
               Container(
                 child: Text(
                   '$title',
-                  style: TextStyle(fontSize: titleText),
+                  style: TextStyle(
+                      fontSize: titleText,
+                      fontFamily: 'FredokaOne',
+                      color: Colors.blue),
                 ),
               ),
               Container(
@@ -52,9 +66,9 @@ class _ConnectingState extends State<Connecting> {
                       padding: EdgeInsets.all(40),
                       child: Column(
                         children: [
-                          Text("การเชื่่อมต่อล้มเหลว",
+                          Text("การเชื่อมต่อล้มเหลว",
                               style: TextStyle(fontSize: infoTextSize)),
-                          Text("กรุณาเชื่่อมต่ออินเทอร์เน็ต",
+                          Text("กรุณาเชื่อมต่ออินเทอร์เน็ต",
                               style: TextStyle(fontSize: infoTextSize)),
                         ],
                       ),

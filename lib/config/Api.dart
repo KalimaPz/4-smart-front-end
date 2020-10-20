@@ -1,3 +1,3 @@
 class Api {
-  static String url = "http://localhost:5000/api/";
+  static String url = "https://foursmartapplication.herokuapp.com/api/";
 }

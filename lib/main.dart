@@ -1,3 +1,4 @@
+import 'package:eldercare/actions/Fetch.dart';
 import 'package:eldercare/views/Connecting.dart';
 import 'package:eldercare/views/Loading.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,8 @@ class _MainRenderState extends State<MainRender> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Connecting(),
+      theme: ThemeData(fontFamily: 'Kanit'),
+      home: Loading(),
     );
   }
 }
