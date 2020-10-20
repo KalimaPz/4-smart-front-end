@@ -19,7 +19,7 @@ class CustomizableButton extends StatelessWidget {
     this.backgroundColor,
     this.addedWidth = 0,
     this.addedHeight = 0,
-    this.callback,
+    @required this.callback,
   }) : super(key: key);
 
   @override

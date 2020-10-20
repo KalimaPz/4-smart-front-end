@@ -1,7 +1,6 @@
-import 'dart:async';
-
 import 'package:eldercare/actions/Fetch.dart';
-import 'package:eldercare/models/Lesson.dart';
+import 'package:eldercare/views/MainMenu.dart';
+import 'package:eldercare/views/SignIn.dart';
 import 'package:flutter/material.dart';
 
 class Loading extends StatefulWidget {
@@ -12,41 +11,84 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
-  Future lessonData;
-  bool isLoadFinish = false;
+  bool finish = false;
+
   @override
   void initState() {
+    Fetch.getData();
+    check();
     super.initState();
-    Future.delayed(Duration(seconds: 5),(){
+  }
+
+  void check() {
+    Future.delayed(Duration(seconds: 3), () {
       setState(() {
-        isLoadFinish = true;
+        finish = true;
       });
     });
-    lessonData = Fetch.getData();
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  final String title = "4 Smart";
+
+  @override
   Widget build(BuildContext context) {
-    print(isLoadFinish);
-    return Container(
-       child: Scaffold(
-         body: Center(
-           child: FutureBuilder(
-             future: lessonData,
-             builder: (context, snapshot) {
-               if(snapshot.hasData){
-                 if(isLoadFinish != true){
-                   return LinearProgressIndicator();
-                 } else {
-                   return Text('Complete');
-                 }
-               }
-               else{
-                 return Text('No Data');
-               }
-             },
-           )),
-       ),
+    return Scaffold(
+      backgroundColor: Colors.lightBlue[50],
+      body: SafeArea(
+          child: Center(
+        child: finish == false
+            ? Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(0),
+                      child: Text(
+                        '$title',
+                        style: TextStyle(
+                            fontSize: 48,
+                            fontFamily: 'FredokaOne',
+                            color: Colors.blueAccent),
+                      ),
+                    ),
+                    Padding(
+                        padding: EdgeInsets.all(50),
+                        child: Image.asset(
+                          'assets/images/appicon.png',
+                          height: 128,
+                          width: 128,
+                        )),
+                    Padding(
+                      padding: EdgeInsets.all(25),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 1.5,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: LinearProgressIndicator(
+                            minHeight: 20,
+                            valueColor: new AlwaysStoppedAnimation<Color>(
+                                Colors.blue[900]),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(0),
+                      child: Text(
+                        'กำลังโหลดข้อมูล...',
+                        style: TextStyle(fontSize: 24),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            : SignIn(),
+      )),
     );
   }
 }
