@@ -1,4 +1,5 @@
 import 'package:eldercare/components/CustomizableButton.dart';
+import 'package:eldercare/main.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -91,6 +92,11 @@ class _ConnectingState extends State<Connecting> {
                             setState(() {
                               loading = !loading;
                             });
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MainRender(),
+                                ));
                           });
                         },
                         backgroundColor: Colors.green,

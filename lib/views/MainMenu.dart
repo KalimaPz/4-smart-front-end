@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'Register.dart';
+
 class MainMenu extends StatefulWidget {
   final Future lessonData;
 
@@ -24,13 +26,22 @@ class _MainMenuState extends State<MainMenu> {
   String lastName;
   Future getUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.getString('name') == null) {
+      print('Found NUll');
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Register(),
+          ),
+          (route) => false);
+    }
     print(prefs.getString('name'));
-    print(prefs.getString('lname'));
+    // print(prefs.getString('lname'));
     print(prefs.getKeys());
 
     setState(() {
       firstName = prefs.getString('name');
-      lastName = prefs.getString('lname');
+      // lastName = prefs.getString('lname');
     });
   }
 
@@ -67,7 +78,7 @@ class _MainMenuState extends State<MainMenu> {
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: CustomHeader(
-                    text: 'คุณคือ $firstName $lastName',
+                    text: 'คุณคือ $firstName ',
                     mainAxisAlignment: MainAxisAlignment.center,
                     textSize: Views.subTopicSize,
                   ),
