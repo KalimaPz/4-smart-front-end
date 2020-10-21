@@ -11,7 +11,7 @@ class Fetch {
     );
     print(res.statusCode.toString());
     if (res.statusCode == 200) {
-      print(res.body);
+      // print(res.body);
       List list = json.decode(res.body);
       return list.map((m) => Lesson.fromJson(m)).toList();
     } else {

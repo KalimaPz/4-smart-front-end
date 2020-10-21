@@ -3,7 +3,11 @@ import 'package:eldercare/views/Register.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatelessWidget {
-  const SignIn({Key key}) : super(key: key);
+  // final Future lessonData;
+  const SignIn({
+    Key key,
+    // this.lessonData
+  }) : super(key: key);
 
   final String title = '4 Smart';
   final double titleSize = 28.0;

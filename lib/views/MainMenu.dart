@@ -1,5 +1,7 @@
+import 'package:eldercare/actions/Fetch.dart';
 import 'package:eldercare/components/CircularButton.dart';
 import 'package:eldercare/components/CustomHeader.dart';
+import 'package:eldercare/config/Views.dart';
 import 'package:eldercare/views/Depress.dart';
 import 'package:eldercare/views/FellDown.dart';
 import 'package:eldercare/views/Forget.dart';
@@ -8,19 +10,32 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainMenu extends StatefulWidget {
-  MainMenu({Key key}) : super(key: key);
+  final Future lessonData;
+  MainMenu({Key key, this.lessonData}) : super(key: key);
 
   @override
   _MainMenuState createState() => _MainMenuState();
 }
 
 class _MainMenuState extends State<MainMenu> {
+  Future lessonData;
+  @override
+  void initState() {
+    super.initState();
+    lessonData = Fetch.getData();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('เมนูหลัก'),
+          title: Text('เมนูหลัก', style: TextStyle(fontSize: Views.titleSize)),
         ),
         body: SafeArea(
             child: SingleChildScrollView(
@@ -32,6 +47,7 @@ class _MainMenuState extends State<MainMenu> {
                   child: CustomHeader(
                     text: 'คุณคือ ',
                     mainAxisAlignment: MainAxisAlignment.center,
+                    textSize: Views.subTopicSize,
                   ),
                 ),
                 Padding(
@@ -67,7 +83,8 @@ class _MainMenuState extends State<MainMenu> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => FellDown(),
+                          builder: (context) =>
+                              FellDown(lessonData: lessonData),
                         ));
                   }),
               CircularButton(

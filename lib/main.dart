@@ -1,5 +1,3 @@
-import 'package:eldercare/actions/Fetch.dart';
-import 'package:eldercare/views/Connecting.dart';
 import 'package:eldercare/views/Loading.dart';
 import 'package:flutter/material.dart';
 

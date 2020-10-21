@@ -1,10 +1,13 @@
 import 'package:eldercare/components/CustomizableButton.dart';
 import 'package:eldercare/views/MainMenu.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class Register extends StatefulWidget {
-  Register({Key key}) : super(key: key);
+  // final Future lessonData;
+  Register({
+    Key key,
+    //  this.lessonData
+  }) : super(key: key);
 
   @override
   _RegisterState createState() => _RegisterState();
