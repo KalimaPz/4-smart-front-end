@@ -12,10 +12,10 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
   bool finish = false;
-
+  // var lessonData;
   @override
   void initState() {
-    Fetch.getData();
+    // lessonData = Fetch.getData();
     check();
     super.initState();
   }

@@ -1,18 +1,43 @@
+import 'package:eldercare/actions/CreateUser.dart';
 import 'package:eldercare/components/CustomizableButton.dart';
+import 'package:eldercare/views/MainMenu.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class Register extends StatefulWidget {
-  Register({Key key}) : super(key: key);
+  // final Future lessonData;
+  Register({
+    Key key,
+    //  this.lessonData
+  }) : super(key: key);
 
   @override
   _RegisterState createState() => _RegisterState();
 }
 
-class _RegisterState extends State<Register>
-    with SingleTickerProviderStateMixin {
+class _RegisterState extends State<Register> {
   final String headerInstruct = "โปรดกรอกรายละเอียดของท่าน";
   final double formGap = 50;
+
+  TextEditingController firstNameController;
+  TextEditingController lastNameController;
+  TextEditingController ageController;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    firstNameController = TextEditingController();
+    lastNameController = TextEditingController();
+    ageController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    firstNameController.dispose();
+    lastNameController.dispose();
+    ageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +60,18 @@ class _RegisterState extends State<Register>
                     width: 300,
                     child: CustomizableButton(
                       text: 'ดำเนินการต่อ',
-                      callback: () {},
+                      callback: () {
+                        CreateUser.createUser(
+                            firstName: firstNameController.text.toString(),
+                            lastName: lastNameController.text.toString(),
+                            age: ageController.text.toString());
+                        // Navigator.pushAndRemoveUntil(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (context) => MainMenu(),
+                        //     ),
+                        //     (route) => false);
+                      },
                       backgroundColor: Colors.blue,
                       addedHeight: 20,
                     ),
@@ -70,7 +106,8 @@ class _RegisterState extends State<Register>
               SizedBox(
                   width: 200,
                   height: 50,
-                  child: TextFormField(
+                  child: TextField(
+                    controller: firstNameController,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30))),
@@ -88,7 +125,8 @@ class _RegisterState extends State<Register>
               SizedBox(
                   width: 200,
                   height: 50,
-                  child: TextFormField(
+                  child: TextField(
+                    controller: lastNameController,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30))),
@@ -106,8 +144,8 @@ class _RegisterState extends State<Register>
               SizedBox(
                   width: 200,
                   height: 50,
-                  child: TextFormField(
-                    autofocus: true,
+                  child: TextField(
+                    controller: ageController,
                     scrollPadding: EdgeInsets.all(10),
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
