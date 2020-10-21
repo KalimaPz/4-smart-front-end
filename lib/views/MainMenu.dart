@@ -8,9 +8,11 @@ import 'package:eldercare/views/Forget.dart';
 import 'package:eldercare/views/Meal.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainMenu extends StatefulWidget {
   final Future lessonData;
+
   MainMenu({Key key, this.lessonData}) : super(key: key);
 
   @override
@@ -18,11 +20,31 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
+  String firstName;
+  String lastName;
+  Future getUserData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    print(prefs.getString('name'));
+    print(prefs.getString('lname'));
+    print(prefs.getKeys());
+
+    setState(() {
+      firstName = prefs.getString('name');
+      lastName = prefs.getString('lname');
+    });
+  }
+
+  void prefClear() async {
+    final pref = await SharedPreferences.getInstance();
+    await pref.clear();
+  }
+
   Future lessonData;
   @override
   void initState() {
     super.initState();
     lessonData = Fetch.getData();
+    getUserData();
   }
 
   @override
@@ -45,7 +67,7 @@ class _MainMenuState extends State<MainMenu> {
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: CustomHeader(
-                    text: 'คุณคือ ',
+                    text: 'คุณคือ $firstName $lastName',
                     mainAxisAlignment: MainAxisAlignment.center,
                     textSize: Views.subTopicSize,
                   ),
@@ -133,6 +155,7 @@ class _MainMenuState extends State<MainMenu> {
                   })
             ],
           ),
+          RaisedButton(onPressed: () => prefClear())
         ],
       ),
     );

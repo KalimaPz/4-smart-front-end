@@ -2,6 +2,7 @@ import 'package:eldercare/actions/CreateUser.dart';
 import 'package:eldercare/components/CustomizableButton.dart';
 import 'package:eldercare/views/MainMenu.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Register extends StatefulWidget {
   // final Future lessonData;
@@ -21,6 +22,14 @@ class _RegisterState extends State<Register> {
   TextEditingController firstNameController;
   TextEditingController lastNameController;
   TextEditingController ageController;
+
+  Future saveUserInfo(String firstname, String lastname) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    // await pref.setString();
+    await prefs.setString('name', firstname);
+    await prefs.setString('lname', lastname);
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -65,12 +74,14 @@ class _RegisterState extends State<Register> {
                             firstName: firstNameController.text.toString(),
                             lastName: lastNameController.text.toString(),
                             age: ageController.text.toString());
-                        // Navigator.pushAndRemoveUntil(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => MainMenu(),
-                        //     ),
-                        //     (route) => false);
+                        saveUserInfo(firstNameController.text.toString(),
+                            lastNameController.text.toString());
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MainMenu(),
+                            ),
+                            (route) => false);
                       },
                       backgroundColor: Colors.blue,
                       addedHeight: 20,
