@@ -6,6 +6,7 @@ import 'package:eldercare/views/Depress.dart';
 import 'package:eldercare/views/FellDown.dart';
 import 'package:eldercare/views/Forget.dart';
 import 'package:eldercare/views/Meal.dart';
+import 'package:eldercare/views/Poll.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -76,7 +77,7 @@ class _MainMenuState extends State<MainMenu> {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(30),
                   child: CustomHeader(
                     text: 'คุณคือ $firstName ',
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -84,11 +85,11 @@ class _MainMenuState extends State<MainMenu> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Image.asset(
                     'assets/images/appicon.png',
-                    height: 200,
-                    width: 200,
+                    height: 150,
+                    width: 150,
                   ),
                 ),
                 buttonContainer()
@@ -166,7 +167,14 @@ class _MainMenuState extends State<MainMenu> {
                   })
             ],
           ),
-          RaisedButton(onPressed: () => prefClear())
+          RaisedButton(child: Text('PREF CLS'), onPressed: () => prefClear()),
+          RaisedButton(
+              child: Text('WEB VIEW'),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Poll(),
+                  )))
         ],
       ),
     );

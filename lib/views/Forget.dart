@@ -1,3 +1,4 @@
+import 'package:eldercare/views/Game/Game.dart';
 import 'package:flutter/material.dart';
 
 class Forget extends StatelessWidget {
@@ -13,7 +14,9 @@ class Forget extends StatelessWidget {
       ),
       body: SafeArea(
           child: Container(
-        child: Text('$title'),
+        child: Column(
+          children: [Game()],
+        ),
       )),
     );
   }
