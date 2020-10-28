@@ -167,10 +167,14 @@ class _AnswerState extends State<Answer> {
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Center(
-                child: Wrap(
-                  children: answerRender(widget.pattern),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Wrap(
+                    children: answerRender(widget.pattern),
+                  ),
                 ),
               )
             ],

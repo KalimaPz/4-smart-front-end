@@ -56,6 +56,7 @@ class _SignInState extends State<SignIn> {
           child: Text(
             '$title',
             style: TextStyle(
+                color: Colors.lightBlue[900],
                 fontFamily: 'FredokaOne',
                 fontSize: titleSize,
                 fontWeight: FontWeight.bold),

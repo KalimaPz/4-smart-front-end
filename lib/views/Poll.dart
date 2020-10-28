@@ -1,20 +1,18 @@
 import 'package:eldercare/config/Views.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 class Poll extends StatelessWidget {
   const Poll({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WebviewScaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: Text('แบบสำรวจ', style: TextStyle(fontSize: Views.titleSize)),
+        title: Text('แบบประเมินสุขภาพ'),
       ),
-      body: WebView(
-        initialUrl: 'https://www.google.co.th/',
-      ),
+      url:
+          'https://docs.google.com/forms/d/e/1FAIpQLSdi0iiowr_Z8EXja25Tbris5QoP-NP3WNXLPLlYmEoTn9j9ug/viewform',
     );
   }
 }

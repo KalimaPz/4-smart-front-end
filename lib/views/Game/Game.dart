@@ -24,7 +24,7 @@ class _GameState extends State<Game> {
   Timer counter;
   int pattern;
   Color timeColor = Colors.black87;
-  int time = 10;
+  int time = 20;
 
   @override
   void initState() {
@@ -45,7 +45,7 @@ class _GameState extends State<Game> {
   }
 
   void createTimer() {
-    counter = new Timer.periodic(Duration(seconds: 1), (timer) {
+    counter = new Timer.periodic(Duration(milliseconds: 1000), (timer) {
       print('$time');
       if (time != 0) {
         setState(() {
