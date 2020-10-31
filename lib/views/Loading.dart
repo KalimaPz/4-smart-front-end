@@ -1,7 +1,9 @@
 import 'package:eldercare/actions/Fetch.dart';
 import 'package:eldercare/views/MainMenu.dart';
+import 'package:eldercare/views/Register.dart';
 import 'package:eldercare/views/SignIn.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Loading extends StatefulWidget {
   Loading({Key key}) : super(key: key);
@@ -21,7 +23,7 @@ class _LoadingState extends State<Loading> {
   }
 
   void check() {
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 5), () {
       setState(() {
         finish = true;
       });
