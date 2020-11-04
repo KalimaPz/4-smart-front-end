@@ -95,9 +95,11 @@ class _GameState extends State<Game> {
                   color: timeColor, fontSize: 36, fontWeight: FontWeight.bold),
             ),
           ),
-          Center(
-            child: Wrap(
-              children: GamePattern.listShuffle(game),
+          FittedBox(
+                      child: Center(
+              child: Wrap(
+                children: GamePattern.listShuffle(game),
+              ),
             ),
           ),
           Padding(

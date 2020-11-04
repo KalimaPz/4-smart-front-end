@@ -1,3 +1,4 @@
+import 'package:eldercare/actions/TextReader.dart';
 import 'package:eldercare/components/CustomHeader.dart';
 import 'package:flutter/material.dart';
 
@@ -39,12 +40,15 @@ class ArticleArea extends StatelessWidget {
         children: [
           Container(
             width: 300,
-            child: CustomHeader(
-              text: '$topic',
-              backgroundColor: headerBgColor,
-              textSize: textSize,
-              textColor: headerTextColor,
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: GestureDetector(
+              onTap: () => TextReader.speak('$topic'),
+              child: CustomHeader(
+                text: '$topic',
+                backgroundColor: headerBgColor,
+                textSize: textSize,
+                textColor: headerTextColor,
+                mainAxisAlignment: MainAxisAlignment.center,
+              ),
             ),
           ),
           Container(

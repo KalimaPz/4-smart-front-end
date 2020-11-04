@@ -21,66 +21,68 @@ class Depress extends StatelessWidget {
       ),
       body: SafeArea(
           child: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(Views.topicPadding),
-                child: CustomHeader(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  text: '${DataClass.depressPage['content'][0]['header']}',
-                  textSize: Views.topicSize,
+        child: FittedBox(
+                  child: Container(
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(Views.topicPadding),
+                  child: CustomHeader(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    text: '${DataClass.depressPage['content'][0]['header']}',
+                    textSize: Views.topicSize,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(spacer),
-                child: CustomHeader(
-                  textSize: Views.contentTextSize,
-                  text:
-                      '1. ${DataClass.depressPage['content'][0]['detail'][0]}',
+                Padding(
+                  padding: const EdgeInsets.all(spacer),
+                  child: CustomHeader(
+                    textSize: Views.contentTextSize,
+                    text:
+                        '1. ${DataClass.depressPage['content'][0]['detail'][0]}',
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'assets/images/Done/2.png',
-                  width: imageSize,
-                  height: imageSize,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                    'assets/images/Done/2.png',
+                    width: imageSize,
+                    height: imageSize,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(spacer),
-                child: CustomHeader(
-                  textSize: Views.contentTextSize,
-                  text:
-                      '2. ${DataClass.depressPage['content'][0]['detail'][1]}',
+                Padding(
+                  padding: const EdgeInsets.all(spacer),
+                  child: CustomHeader(
+                    textSize: Views.contentTextSize,
+                    text:
+                        '2. ${DataClass.depressPage['content'][0]['detail'][1]}',
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'assets/images/Done/5.png',
-                  width: imageSize,
-                  height: imageSize,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                    'assets/images/Done/5.png',
+                    width: imageSize,
+                    height: imageSize,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(spacer),
-                child: CustomHeader(
-                  textSize: Views.contentTextSize,
-                  text:
-                      '3. ${DataClass.depressPage['content'][0]['detail'][2]}',
+                Padding(
+                  padding: const EdgeInsets.all(spacer),
+                  child: CustomHeader(
+                    textSize: Views.contentTextSize,
+                    text:
+                        '3. ${DataClass.depressPage['content'][0]['detail'][2]}',
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'assets/images/Done/6.png',
-                  width: imageSize,
-                  height: imageSize,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                    'assets/images/Done/6.png',
+                    width: imageSize,
+                    height: imageSize,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       )),
