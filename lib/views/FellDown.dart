@@ -16,6 +16,20 @@ class FellDown extends StatefulWidget {
 
 class _FellDownState extends State<FellDown> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    TextReader.speak('ไม่ล้ม');
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    TextReader.stop();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final String title = 'ไม่ล้ม';
     final double imageSize = 150;
@@ -132,6 +146,12 @@ class _FellDownState extends State<FellDown> {
               padding: const EdgeInsets.all(8.0),
               child: VideoPlayerComponent(
                 videoUrl: 'c0yzKFn_KAA',
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: VideoPlayerComponent(
+                videoUrl: 'raiL_XKL2Is',
               ),
             )
           ])),

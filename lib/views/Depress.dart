@@ -1,10 +1,30 @@
+import 'package:eldercare/actions/TextReader.dart';
 import 'package:eldercare/components/CustomHeader.dart';
 import 'package:eldercare/config/Views.dart';
 import 'package:eldercare/data/DataClass.dart';
 import 'package:flutter/material.dart';
 
-class Depress extends StatelessWidget {
+class Depress extends StatefulWidget {
   const Depress({Key key}) : super(key: key);
+
+  @override
+  _DepressState createState() => _DepressState();
+}
+
+class _DepressState extends State<Depress> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    TextReader.speak('ไม่ซึมเศร้า');
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    TextReader.stop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +42,7 @@ class Depress extends StatelessWidget {
       body: SafeArea(
           child: SingleChildScrollView(
         child: FittedBox(
-                  child: Container(
+          child: Container(
             child: Column(
               children: [
                 Padding(

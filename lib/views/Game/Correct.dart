@@ -1,11 +1,31 @@
+import 'package:eldercare/actions/TextReader.dart';
 import 'package:eldercare/components/CustomizableButton.dart';
 import 'package:eldercare/config/Views.dart';
 import 'package:eldercare/views/MainMenu.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Correct extends StatelessWidget {
+class Correct extends StatefulWidget {
   const Correct({Key key}) : super(key: key);
+
+  @override
+  _CorrectState createState() => _CorrectState();
+}
+
+class _CorrectState extends State<Correct> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    TextReader.speak('ยินดีด้วยคุณตอบถูก');
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    TextReader.stop();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

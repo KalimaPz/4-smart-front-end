@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:math';
+import 'package:eldercare/actions/TextReader.dart';
 import 'package:eldercare/components/CustomizableButton.dart';
+import 'package:eldercare/data/DataClass.dart';
 import 'package:eldercare/views/Game/Answer.dart';
 import 'package:eldercare/views/Game/GamePattern.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +31,7 @@ class _GameState extends State<Game> {
   @override
   void initState() {
     super.initState();
+    TextReader.speak(DataClass.instruction[5]);
     patternRand();
   }
 
@@ -47,6 +50,7 @@ class _GameState extends State<Game> {
   void createTimer() {
     counter = new Timer.periodic(Duration(milliseconds: 1000), (timer) {
       print('$time');
+      TextReader.speak('$time');
       if (time != 0) {
         setState(() {
           time--;
@@ -74,6 +78,7 @@ class _GameState extends State<Game> {
     if (counter != null) {
       counter.cancel();
     }
+    TextReader.stop();
     super.dispose();
   }
 
@@ -96,7 +101,7 @@ class _GameState extends State<Game> {
             ),
           ),
           FittedBox(
-                      child: Center(
+            child: Center(
               child: Wrap(
                 children: GamePattern.listShuffle(game),
               ),

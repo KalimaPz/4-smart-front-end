@@ -1,11 +1,24 @@
+import 'package:eldercare/actions/TextReader.dart';
 import 'package:eldercare/components/CustomizableButton.dart';
 import 'package:eldercare/config/Views.dart';
 import 'package:eldercare/views/MainMenu.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Wrong extends StatelessWidget {
+class Wrong extends StatefulWidget {
   const Wrong({Key key}) : super(key: key);
+
+  @override
+  _WrongState createState() => _WrongState();
+}
+
+class _WrongState extends State<Wrong> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    TextReader.speak('เสียใจด้วยเป็นคำตอบที่ผิด');
+  }
 
   @override
   Widget build(BuildContext context) {

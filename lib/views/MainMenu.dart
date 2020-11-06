@@ -4,6 +4,7 @@ import 'package:eldercare/components/CircularButton.dart';
 import 'package:eldercare/components/CustomHeader.dart';
 import 'package:eldercare/components/CustomizableButton.dart';
 import 'package:eldercare/config/Views.dart';
+import 'package:eldercare/data/DataClass.dart';
 import 'package:eldercare/views/Depress.dart';
 import 'package:eldercare/views/FellDown.dart';
 import 'package:eldercare/views/Forget.dart';
@@ -59,11 +60,13 @@ class _MainMenuState extends State<MainMenu> {
     super.initState();
     lessonData = Fetch.getData();
     getUserData();
+    TextReader.speak(DataClass.instruction[0]);
   }
 
   @override
   void dispose() {
     super.dispose();
+    TextReader.stop();
   }
 
   @override

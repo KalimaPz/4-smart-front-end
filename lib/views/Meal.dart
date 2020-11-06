@@ -16,6 +16,19 @@ class Meal extends StatefulWidget {
 }
 
 class _MealState extends State<Meal> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    TextReader.speak('กินข้าวอร่อย');
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    TextReader.stop();
+  }
+
   final double imageSize = 256;
 
   @override
