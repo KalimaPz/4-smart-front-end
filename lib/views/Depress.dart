@@ -132,6 +132,7 @@ class _DepressState extends State<Depress> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => ReaderWebView(
+                                          isWeb: true,
                                           title: 'นิทานพ่อแม่',
                                           url: '${Novel.story[0]}',
                                         )))),
@@ -147,8 +148,10 @@ class _DepressState extends State<Depress> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => ReaderWebView(
+                                          isWeb: true,
                                           title: 'พญาไก่ป่า',
                                           url: '${Novel.story[1]}',
+                                          audioLink: '${Novel.link[0]}',
                                         )))),
                       ),
                       SizedBox(
@@ -162,8 +165,10 @@ class _DepressState extends State<Depress> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => ReaderWebView(
+                                          isWeb: false,
                                           title: 'ลากับเงา',
                                           url: '${Novel.story[2]}',
+                                          audioLink: '${Novel.link[1]}',
                                         )))),
                       ),
                     ],

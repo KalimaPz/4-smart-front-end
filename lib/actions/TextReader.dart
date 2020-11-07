@@ -16,7 +16,6 @@ class TextReader {
   }
 
   static void stop() {
-    // flutterTts.
     flutterTts.stop();
   }
 }

@@ -40,12 +40,10 @@ class _MainMenuState extends State<MainMenu> {
           (route) => false);
     }
     print(prefs.getString('name'));
-    // print(prefs.getString('lname'));
     print(prefs.getKeys());
 
     setState(() {
       firstName = prefs.getString('name');
-      // lastName = prefs.getString('lname');
     });
   }
 
