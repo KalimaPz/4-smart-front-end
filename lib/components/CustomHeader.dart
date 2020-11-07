@@ -1,3 +1,4 @@
+import 'package:eldercare/actions/TextReader.dart';
 import 'package:flutter/material.dart';
 
 class CustomHeader extends StatelessWidget {
@@ -23,18 +24,21 @@ class CustomHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: backgroundColor, borderRadius: BorderRadius.circular(999)),
-      height: height,
+    return GestureDetector(
+      onTap: () => TextReader.speak('$text'),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Row(
-          mainAxisAlignment: mainAxisAlignment,
-          children: [
-            Text('$text',
-                style: TextStyle(color: textColor, fontSize: textSize))
-          ],
+        decoration: BoxDecoration(
+            color: backgroundColor, borderRadius: BorderRadius.circular(999)),
+        height: height,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: mainAxisAlignment,
+            children: [
+              Text('$text',
+                  style: TextStyle(color: textColor, fontSize: textSize))
+            ],
+          ),
         ),
       ),
     );

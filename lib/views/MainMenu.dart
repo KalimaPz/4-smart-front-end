@@ -1,8 +1,10 @@
 import 'package:eldercare/actions/Fetch.dart';
+import 'package:eldercare/actions/TextReader.dart';
 import 'package:eldercare/components/CircularButton.dart';
 import 'package:eldercare/components/CustomHeader.dart';
 import 'package:eldercare/components/CustomizableButton.dart';
 import 'package:eldercare/config/Views.dart';
+import 'package:eldercare/data/DataClass.dart';
 import 'package:eldercare/views/Depress.dart';
 import 'package:eldercare/views/FellDown.dart';
 import 'package:eldercare/views/Forget.dart';
@@ -38,12 +40,10 @@ class _MainMenuState extends State<MainMenu> {
           (route) => false);
     }
     print(prefs.getString('name'));
-    // print(prefs.getString('lname'));
     print(prefs.getKeys());
 
     setState(() {
       firstName = prefs.getString('name');
-      // lastName = prefs.getString('lname');
     });
   }
 
@@ -58,11 +58,13 @@ class _MainMenuState extends State<MainMenu> {
     super.initState();
     lessonData = Fetch.getData();
     getUserData();
+    TextReader.speak(DataClass.instruction[0]);
   }
 
   @override
   void dispose() {
     super.dispose();
+    TextReader.stop();
   }
 
   @override
@@ -108,64 +110,72 @@ class _MainMenuState extends State<MainMenu> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircularButton(
-                  icon: FontAwesomeIcons.userInjured,
-                  backgroundColor: Color.fromRGBO(155, 36, 36, 1),
-                  iconColor: Colors.white,
-                  subtitle: 'ไม่ล้ม',
-                  size: 128,
-                  callback: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              FellDown(lessonData: lessonData),
-                        ));
-                  }),
-              CircularButton(
-                  icon: FontAwesomeIcons.question,
-                  backgroundColor: Color.fromRGBO(97, 37, 124, 1),
-                  iconColor: Colors.white,
-                  subtitle: 'ไม่ลืม',
-                  size: 128,
-                  callback: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Forget(),
-                        ));
-                  })
+              FittedBox(
+                child: CircularButton(
+                    icon: FontAwesomeIcons.userInjured,
+                    backgroundColor: Color.fromRGBO(155, 36, 36, 1),
+                    iconColor: Colors.white,
+                    subtitle: 'ไม่ล้ม',
+                    size: 64,
+                    callback: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                FellDown(lessonData: lessonData),
+                          ));
+                    }),
+              ),
+              FittedBox(
+                child: CircularButton(
+                    icon: FontAwesomeIcons.question,
+                    backgroundColor: Color.fromRGBO(97, 37, 124, 1),
+                    iconColor: Colors.white,
+                    subtitle: 'ไม่ลืม',
+                    size: 64,
+                    callback: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Forget(),
+                          ));
+                    }),
+              )
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircularButton(
-                  icon: FontAwesomeIcons.smileWink,
-                  backgroundColor: Color.fromRGBO(35, 152, 157, 1),
-                  iconColor: Colors.white,
-                  subtitle: 'ไม่ซึมเศร้า',
-                  size: 128,
-                  callback: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Depress(),
-                        ));
-                  }),
-              CircularButton(
-                  icon: FontAwesomeIcons.utensils,
-                  backgroundColor: Color.fromRGBO(35, 136, 43, 1),
-                  iconColor: Colors.white,
-                  subtitle: 'กินข้าวอร่อย',
-                  size: 128,
-                  callback: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Meal(),
-                        ));
-                  })
+              FittedBox(
+                child: CircularButton(
+                    icon: FontAwesomeIcons.smileWink,
+                    backgroundColor: Color.fromRGBO(35, 152, 157, 1),
+                    iconColor: Colors.white,
+                    subtitle: 'ไม่ซึมเศร้า',
+                    size: 64,
+                    callback: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Depress(),
+                          ));
+                    }),
+              ),
+              FittedBox(
+                child: CircularButton(
+                    icon: FontAwesomeIcons.utensils,
+                    backgroundColor: Color.fromRGBO(35, 136, 43, 1),
+                    iconColor: Colors.white,
+                    subtitle: 'กินข้าวอร่อย',
+                    size: 64,
+                    callback: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Meal(),
+                          ));
+                    }),
+              )
             ],
           ),
           // RaisedButton(child: Text('PREF CLS'), onPressed: () => prefClear()),
@@ -180,7 +190,13 @@ class _MainMenuState extends State<MainMenu> {
                     MaterialPageRoute(
                       builder: (context) => Poll(),
                     ))),
-          )
+          ),
+          // RaisedButton(
+          //   child: Text(
+          //     'Speak',
+          //   ),
+          //   onPressed: () => TextReader.speak(),
+          // )
         ],
       ),
     );
