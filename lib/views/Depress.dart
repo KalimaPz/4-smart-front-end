@@ -32,7 +32,7 @@ class _DepressState extends State<Depress> {
 
   @override
   Widget build(BuildContext context) {
-    final String title = 'ซึมเศร้า';
+    final String title = 'ไม่ซึมเศร้า';
     const double spacer = 20;
     const double imageSize = 256;
     return Scaffold(
@@ -107,6 +107,7 @@ class _DepressState extends State<Depress> {
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width - 50,
+                  height: 60,
                   child: CustomHeader(
                     text: 'อ่านนิทาน',
                     textSize: 28,
